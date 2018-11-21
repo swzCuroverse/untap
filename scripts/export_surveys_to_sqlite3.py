@@ -48,6 +48,11 @@ tables["demographics"]["name"] = ["id", "human_id", "date_of_birth", "gender", "
 tables["demographics"]["type"] = ["integer primary key", "varchar(255)", "varchar(255)", "varchar(255)", "varchar(255)", "varchar(255)", "varchar(255)", "varchar(255)"]
 tables["demographics"]["idx"] = ["create index demographics_idx on demographics(human_id)"]
 
+tables["geographic_information"] = {}
+tables["geographic_information"]["name"] = ["id", "human_id", "state", "zip" ]
+tables["geographic_information"]["type"] = ["integer primary key", "varchar(255)", "varchar(255)", "varchar(255)" ]
+tables["geographic_information"]["idx"] = ["create index geographic_information_idx on geographic_information(human_id)"]
+
 tables["immunizations"] = {}
 tables["immunizations"]["name"] = ["id", "human_id", "name", "date"]
 tables["immunizations"]["type"] = ["integer primary key", "varchar(255)", "varchar(255)", "varchar(255)"]
@@ -72,6 +77,20 @@ tables["enrollment_date"] = {}
 tables["enrollment_date"]["name"] = ["id", "human_id", "enrollment_date"]
 tables["enrollment_date"]["type"] = ["integer primary key", "varchar(255)", "varchar(255)"]
 tables["enrollment_date"]["idx"] = ["create index enrollment_date_human_idx on enrollment_date (human_id)"]
+
+#tables["specimens"] = {}
+#tables["specimens"]["name"] = ["id", "human_id", "crc_id", "amount", "material", "owner_researcher_affiliation", "study_name", "unit" ]
+#tables["specimens"]["type"] = ["integer primary key", "varchar(255)", "varchar(255)", "varchar(255)", "varchar(255)", "varchar(255)", "varchar(255)", "varchar(255)" ]
+#tables["specimens"]["idx"] = ["create index specimens_human_idx on specimens (human_id)",
+#    "create index specimens_crc_id_idx on specimens (crc_id)" ]
+#
+
+tables["specimens"] = {}
+tables["specimens"]["name"] = ["id",                  "human_id",     "href",         "text",         "description",  "log_date", "log_text",     "log_description" ]
+tables["specimens"]["type"] = ["integer primary key", "varchar(255)", "varchar(255)", "varchar(255)", "varchar(255)", "datetime", "varchar(255)", "varchar(255)" ]
+tables["specimens"]["idx"] = ["create index specimens_human_idx on specimens (human_id)",
+    "create index specimens_href_idx on specimens (href)",
+    "create index specimens_log_date_idx on specimens (log_date)" ]
 
 
 def populate_table(curs, table, fn):
@@ -101,6 +120,9 @@ def populate_table(curs, table, fn):
       for i,v in enumerate(row):
         irow.append(v)
       curs.execute("insert into " + table + " " + ff + " values " + qq, irow)
+
+  for idx_line in tables[table]["idx"]:
+    curs.execute(idx_line)
 
 conn = sqlite3.connect(OUT_SQLITE3_DB)
 conn.text_factory = str

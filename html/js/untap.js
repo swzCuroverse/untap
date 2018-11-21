@@ -17,10 +17,12 @@ var g_hu_vec = [];
 //
 var example_query_map = {
   "survey" : "select * \nfrom survey limit 10",
+  "specimens" : "select * \nfrom specimens limit 10",
   "uploaded_data" : "select * from uploaded_data limit 10",
   "allergies" : "select * from allergies limit 10",
   "conditions" : "select * from conditions limit 10",
   "demographics" : "select * from demographics limit 10",
+  "geographic_information" : "select * from geographic_information limit 10",
   "immunizations" : "select * from immunizations limit 10",
   "medications" : "select * from medications limit 10",
   "procedures" : "select * from procedures limit 10",

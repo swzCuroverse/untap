@@ -3,7 +3,8 @@ untap
 
 In order to facilitate ease of access, some of the information available through [Harvard Personal Genome Project](http://www.personalgenomes.org/) page and the [GET-Evidence](http://evidence.pgp-hms.org/about) site has been consolidated into a small SQLite database (~120Mb uncompressed).  This project is a collection of scripts to download data, consolidate into a SQLite database, upload to an [Arvados](https://arvados.org/) project and create an HTML visualization front end for easy exploration of the data.
 
-You can explore the most recent snapshot of the Harvard Personal Genome Project database snapshot available through [a Curoverse hosted collection](http://curoverse.link/2210f7ee07fc1c8b926e5db28eff9635+3284/html/index.html).
+You can explore the most recent snapshot of the Harvard Personal Genome Project database snapshot available through [a Curoverse hosted collection](https://collections.su92l.arvadosapi.com/c=eddaf802f9f889014e20743c510eb62c-3577/_/arv-stage/html/index.html?disposition=inline)
+
 
 Quick start
 ---
@@ -15,7 +16,9 @@ $ git clone https://github.com/abeconnelly/untap
 $ cd untap
 ```
 
-We need to run the application inside a server such as nginx.
+We need to run the application inside a HTTP server,
+
+### such as nginx
 
 ```bash
 $ cd $HOME
@@ -35,14 +38,21 @@ $ sudo chmod -R 777 /var/www/untap
 $ sudo nginx -s reload
 ```
 
-Now we need to obtain a dataset. Either 1) download the snapshot provided at [the Untap hosted on Curoverse](http://curoverse.link/2210f7ee07fc1c8b926e5db28eff9635+3284/html/index.html) or 2) follow the instructions in the following section to scrape [Tapestry](http://my.pgp-hms.org) and build your own snapshot. In both cases, the database should be put in the root directory, i.e. `/untap/hu-pgp.sqlite3.gz`. 
+### or with a python module
+
+```bash
+$ cd html
+$ python -m SimpleHTTPServer
+```
+
+Now we need to obtain a dataset. Either 1) download the snapshot provided at [the Untap hosted on Curoverse](https://workbench.su92l.arvadosapi.com/collections/2210f7ee07fc1c8b926e5db28eff9635+3284/html/index.html?disposition=inline&size=33766) or 2) follow the instructions in the following section to scrape [Tapestry](http://my.pgp-hms.org) and build your own snapshot. In both cases, the database should be put in the root directory, i.e. `/untap/hu-pgp.sqlite3.gz`. 
 
 Now if you go to [Untap.html](./html/untap.html) you should see the application running and tabs such as "Summary" should show graphs when you select a dropdown option (e.g. "allergies"). 
 
 Updating the Database
 ---
 
-The Quick start uses a static dump of the database and may not be up-to-date. To re-scrape all the data yourself for a more up-to-date copy, see the following instructions.
+The Quick start uses a static snapshot of the database and may not be up-to-date. To re-scrape all the data yourself for a more up-to-date copy, see the following instructions.
 
 You may need several dependencies if they're not installed already.
 
@@ -60,7 +70,7 @@ $ sudo apt-get install parallel
 To download the database from `my.pgp-hms.org` and `evidence.pgp-hms.org` run:
 
 ```bash
-$ ./public-database-dump
+$ ./public-database-snapshot
 ```
 
 If you would like to upload to an [Arvados](https://arvados.org) project (requires an account on an Arvados system and appropriate config files):

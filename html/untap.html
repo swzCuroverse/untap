@@ -173,23 +173,23 @@
 
             <div class='row'>
               <div class='col-sm-6'> <b>demographics</b> </div>
-	      <div class='col-sm-6'> <b>enrollment</b> </div>
-            </div> 
+              <div class='col-sm-6'> <b>enrollment_date</b> </div>
+            </div>
 
-	    <div class='row'>
+      <div class='row'>
               <div class="col-sm-6">
-            	<code>id</code>
-		<code>human_id</code>
-	        <code>date_of_birth</code>
-	        <code>gender</code>
+              <code>id</code>
+    <code>human_id</code>
+          <code>date_of_birth</code>
+          <code>gender</code>
                 <code>weight</code>
                 <code>height</code>
                 <code>blood_type</code>
-                <code>race</code> </div>	
-              <div class="col-sm-6">         
-                <code>id</code> <code>human_id</code> <code>enrollment_date</code> 	         </div>
+                <code>race</code> </div>  
+              <div class="col-sm-6">
+                <code>id</code> <code>human_id</code> <code>enrollment_date</code>            </div>
             </div>
-             
+
              <br/>
 
             <div class='row'>
@@ -209,7 +209,7 @@
 
             <div class='row'>
               <div class='col-sm-6'> <b>procedures</b> </div>
-	      <div class='col-sm-6'> <b>test_results</b> </div>
+        <div class='col-sm-6'> <b>test_results</b> </div>
             </div>
 
             <div class='row'>
@@ -231,15 +231,8 @@
             </div>
 
             <div class='row'>
-
-              <div class="col-sm-6">
-                 <code>id</code> <code>json_record</code>
-              </div>
-
-              <div class="col-sm-6">
-                 <code>id</code> <code>uploaded_data_id</code> <code>suff_record_index</code>
-              </div>
-
+              <div class="col-sm-6"> <code>id</code> <code>json_record</code> </div>
+              <div class="col-sm-6"> <code>id</code> <code>uploaded_data_id</code> <code>suff_record_index</code> </div>
             </div>
 
             <br/>
@@ -251,13 +244,29 @@
 
 
             <div class='row'>
+              <div class="col-sm-6"> <code>id</code> <code>json_record</code> </div>
+              <div class="col-sm-6"> <code>id</code> <code>uploaded_data_id</code> <code>insuff_record_index</code> </div>
+            </div>
+
+            <hr />
+
+            <div class='row'>
+              <div class='col-sm-6'> <b>specimens</b> </div>
+              <div class='col-sm-6'> <b>geographic_information</b> </div>
+            </div>
+
+            <div class='row'>
 
               <div class="col-sm-6">
-                 <code>id</code> <code>json_record</code>
+                <code>id</code> <code>human_id</code> <code>href</code>
+                <code>text</code> <code>description</code>
+                <code>log_date</code> <code>log_text</code>
+                <code>log_description</code>
               </div>
 
               <div class="col-sm-6">
-                 <code>id</code> <code>uploaded_data_id</code> <code>insuff_record_index</code>
+                <code>id</code> <code>human_id</code>
+                <code>state</code> <code>zip</code>
               </div>
 
             </div>
@@ -359,7 +368,7 @@
 <li><a href="../allergies.tsv">allergies.tsv</a></li>
 <li><a href="../conditions.tsv">conditions.tsv</a></li>
 <li><a href="../demographics.tsv">demographics.tsv</a></li>
-<li><a href="../enrollmentdata.csv">enrollmentdata.csv</a></li>
+<li><a href="../enrollment_date.tsv">enrollment_date.tsv</a></li>
 <li><a href="../ge-insuff-hu-map.tsv">ge-insuff-hu-map.tsv</a></li>
 <li><a href="../ge-insuff.tsv">ge-insuff.tsv</a></li>
 <li><a href="../ge-suff-hu-map.tsv">ge-suff-hu-map.tsv</a></li>
@@ -368,6 +377,8 @@
 <li><a href="../immunizations.tsv">immunizations.tsv</a></li>
 <li><a href="../medications.tsv">medications.tsv</a></li>
 <li><a href="../procedures.tsv">procedures.tsv</a></li>
+<li><a href="../specimens.tsv">specimens.tsv</a></li>
+<li><a href="../geographic_information.tsv">geographic_information.tsv</a></li>
 <li><a href="../survey.tsv">survey.tsv</a></li>
 <li><a href="../test_results.tsv">test_results.tsv</a></li>
 <li><a href="../uploaded_data.tsv">uploaded_data.tsv</a></li>
@@ -394,6 +405,7 @@
 <li><a href="../PGP_Trait_Disease_Survey_2012_Respiratory_System.csv">PGP_Trait_Disease_Survey_2012_Respiratory_System.csv</a></li>
 <li><a href="../PGP_Trait_Disease_Survey_2012_Skin_and_Subcutaneous_Tissue.csv">PGP_Trait_Disease_Survey_2012_Skin_and_Subcutaneous_Tissue.csv</a></li>
 <li><a href="../PGP_Trait_Disease_Survey_2012_Vision_and_hearing.csv">PGP_Trait_Disease_Survey_2012_Vision_and_hearing.csv</a></li>
+<li><a href="../PGP_Basic_Phenotypes_Survey_2015.csv">PGP_Basic_Phenotypes_Survey_2015.csv</a></li>
 </ul>
 
               </p>
@@ -558,6 +570,54 @@
   </tr>
 
   <tr>
+    <td rowspan='8'><b style='font-size:125%;'>specimens</b></td>
+    <td><code>id</code></td>
+    <td><mark>int</mark></td>
+    <td><em>123</em></td>
+  </tr>
+  <tr>
+    <td><code>human_id</code></td>
+    <td><mark>string</mark></td>
+    <td><em>hu826751</em></td>
+  </tr>
+
+  <tr>
+    <td><code>href</code></td>
+    <td><mark>string</mark></td>
+    <td><em>https://my.pgp-hms.org/collection_events/1</em></td>
+  </tr>
+
+  <tr>
+    <td><code>description</code></td>
+    <td><mark>string</mark></td>
+    <td><em>PGP Blood Collection</em></td>
+  </tr>
+
+  <tr>
+    <td><code>log_description</code></td>
+    <td><mark>string</mark></td>
+    <td><em>Sample 92175438 (whole blood) received 2013-05-06 21:27:59 UTC by hu826751.</em></td>
+  </tr>
+
+  <tr>
+    <td><code>log_date</code></td>
+    <td><mark>datetime</mark></td>
+    <td><em>2011-09-15 17:09:29 UTC</em></td>
+  </tr>
+
+  <tr>
+    <td><code>log_text</code></td>
+    <td><mark>string</mark></td>
+    <td><em>hu826751</em></td>
+  </tr>
+
+  <tr>
+    <td><code>log_description</code></td>
+    <td><mark>string</mark></td>
+    <td><em>Sample received by participant</em></td>
+  </tr>
+
+  <tr>
     <td rowspan='10'><b style='font-size:125%;'>uploaded_data</b></td>
     <td><code>id</code></td>
     <td><mark>int</mark></td>
@@ -711,7 +771,30 @@
   </tr>
 
   <tr>
-    <td rowspan='3'><b style='font-size:125%;'>enrollment</b></td>
+    <td rowspan='4'><b style='font-size:125%;'>geographic_information</b></td>
+    <td><code>id</code></td>
+    <td><mark>int</mark></td>
+    <td><em>123</em></td>
+  </tr>
+  <tr>
+    <td><code>human_id</code></td>
+    <td><mark>string</mark></td>
+    <td><em>hu826751</em></td>
+  </tr>
+  <tr>
+    <td><code>state</code></td>
+    <td><mark>string</mark></td>
+    <td><em>New York</em></td>
+  </tr>
+  <tr>
+    <td><code>zip</code></td>
+    <td><mark>string</mark></td>
+    <td><em>10012</em></td>
+  </tr>
+
+
+  <tr>
+    <td rowspan='3'><b style='font-size:125%;'>enrollment_date</b></td>
     <td><code>id</code></td>
     <td><mark>int</mark></td>
     <td><em>123</em></td>
@@ -915,6 +998,10 @@
                   </div>
 
                   <div class='btn-group btn-group-xs' role='group'>
+                    <button type='button' class='btn btn-default' onclick='untap_example_query("specimens");'>specimens</button>
+                  </div>
+
+                  <div class='btn-group btn-group-xs' role='group'>
                     <button type='button' class='btn btn-default' onclick='untap_example_query("uploaded_data");'>uploaded_data</button>
                   </div>
                 </div>
@@ -929,8 +1016,14 @@
                   <div class='btn-group btn-group-xs' role='group'>
                     <button type='button' class='btn btn-default' onclick='untap_example_query("demographics");'>demographics</button>
                   </div>
+                </div>
+
+                <div class='btn-group btn-group-justified btn-group-xs' role='group'>
                   <div class='btn-group btn-group-xs' role='group'>
-                    <button type='button' class='btn btn-default' onclick='untap_example_query("enrollment_date");'>enrollment</button>
+                    <button type='button' class='btn btn-default' onclick='untap_example_query("geographic_information");'>geographic_information</button>
+                  </div>
+                  <div class='btn-group btn-group-xs' role='group'>
+                    <button type='button' class='btn btn-default' onclick='untap_example_query("enrollment_date");'>enrollment_date</button>
                   </div>
                 </div>
 
